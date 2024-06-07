@@ -1,0 +1,18 @@
+{
+    "sourceFile": "contracts/ZcdTestTwo.sol",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1717747796055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1717747796055,
+            "name": "Commit-0",
+            "content": "// SPDX-License-Identifier: MIT\n// Compatible with OpenZeppelin Contracts ^5.0.0\npragma solidity ^0.8.20;\n\nimport \"@openzeppelin/contracts/token/ERC20/ERC20.sol\";\nimport \"@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol\";\nimport \"@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol\";\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\nimport \"@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol\";\n\ncontract ZcdTestTwo is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit {\n    constructor(address initialOwner)\n        ERC20(\"zcdTestTwo\", \"MTK\")\n        Ownable(initialOwner)\n        ERC20Permit(\"zcdTestTwo\")\n    {\n        _mint(msg.sender, 10000000 * 10 ** decimals());\n    }\n\n    function pause() public onlyOwner {\n        _pause();\n    }\n\n    function unpause() public onlyOwner {\n        _unpause();\n    }\n\n    function mint(address to, uint256 amount) public onlyOwner {\n        _mint(to, amount);\n    }\n\n    // The following functions are overrides required by Solidity.\n\n    function _update(address from, address to, uint256 value)\n        internal\n        override(ERC20, ERC20Pausable)\n    {\n        super._update(from, to, value);\n    }\n}"
+        }
+    ]
+}
