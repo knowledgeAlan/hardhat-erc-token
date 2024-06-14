@@ -9,12 +9,17 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
 contract ZcdTestTwo is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ERC20Permit {
+       address public   ownerTest ; 
+    
     constructor(address initialOwner)
         ERC20("zcdTestTwo", "MTK")
         Ownable(initialOwner)
         ERC20Permit("zcdTestTwo")
     {
+        ownerTest = initialOwner;
+
         _mint(msg.sender, 10000000 * 10 ** decimals());
+
     }
 
     function pause() public onlyOwner {
