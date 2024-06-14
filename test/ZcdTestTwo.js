@@ -6,7 +6,7 @@ const {
   const { expect } = require("chai");
 const { decrypt } = require("dotenv");
 
-  // import "hardhat/console.sol";
+ 
 
   describe("ZcdTestTwo",function () {
 
